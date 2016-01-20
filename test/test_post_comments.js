@@ -32,7 +32,7 @@ describe('Post Comments CRUD Routes', function() {
       });
     })
   });
-  xit('should POST a post comment to /posts/:post_id/comments', function(done) {
+  it('should POST a post comment to /posts/:post_id/comments', function(done) {
     var theComment = {
       'commenter': 'Oscar Wilde',
       'body': 'Be yourself; everyone else is already taken.'
@@ -40,7 +40,6 @@ describe('Post Comments CRUD Routes', function() {
     chai.request(server)
       .get('/posts').end(function (err, res) {
         var thePost = res.body.SUCCESS[0];
-        theComment.post_id = thePost.id
         chai.request(server)
           .post('/posts/'+thePost.id+'/comments')
           .send(theComment)
@@ -51,7 +50,7 @@ describe('Post Comments CRUD Routes', function() {
           });
       })
     });
-  xit('should GET a SINGLE post comment from /posts/:post_id/comments/:id', function(done) {
+  it('should GET a SINGLE post comment from /posts/:post_id/comments/:id', function(done) {
     chai.request(server)
       .get('/posts').end(function (err, res) {
         var thePost = res.body.SUCCESS[1];
@@ -70,7 +69,7 @@ describe('Post Comments CRUD Routes', function() {
 
         })
     });
-    xit('should GET post comment EDIT route /posts/:post_id/comments/:id/edit', function (done) {
+    it('should GET post comment EDIT route /posts/:post_id/comments/:id/edit', function (done) {
       chai.request(server).get('/posts').end(function (err, res) {
         var thePost = res.body.SUCCESS[1];
         chai.request(server).get('/posts/'+thePost.id+'/comments')
@@ -86,7 +85,7 @@ describe('Post Comments CRUD Routes', function() {
         });
       })
     });
-    xit('should UPDATE a post comment to /posts/:post_id/comments/:id', function(done) {
+    it('should UPDATE a post comment to /posts/:post_id/comments/:id', function(done) {
       chai.request(server)
         .get('/posts').end(function (err, res) {
           var thePost = res.body.SUCCESS[1];
@@ -104,7 +103,7 @@ describe('Post Comments CRUD Routes', function() {
           })
         })
     });
-    xit('should DELETE a post comment to /posts/:post_id/comments/:id/delete', function(done) {
+    it('should DELETE a post comment to /posts/:post_id/comments/:id/delete', function(done) {
       chai.request(server)
         .get('/posts').end(function (err, res) {
           var thePost = res.body.SUCCESS[1];
