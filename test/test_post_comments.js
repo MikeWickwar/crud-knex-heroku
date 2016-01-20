@@ -11,12 +11,12 @@ describe('Post Comments CRUD Routes', function() {
   beforeEach(function () {
     return knex.seed.run(knex.config);
   });
-  xit('should use knex migrations', function () {
+  it('should use knex migrations', function () {
   return knex('knex_migrations').select().then(function (migrations) {
     assert.equal(migrations.length, 2);
     })
   })
-  xit('should GET ALL comments for a post on /posts/:post_id/comments', function (done) {
+  it('should GET ALL comments for a post on /posts/:post_id/comments', function (done) {
     chai.request(server)
     .get('/posts').end(function (err, res) {
       var thePost=res.body.SUCCESS[1];

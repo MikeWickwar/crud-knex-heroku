@@ -5,4 +5,5 @@ router.get('/', function(req, res, next) {
   res.redirect('/posts');
 });
 
+
 module.exports = router;
